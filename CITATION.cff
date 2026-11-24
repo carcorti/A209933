@@ -1,8 +1,9 @@
 cff-version: 1.2.0
-message: "Please cite the software and accompanying article. Release v1.0 is planned; DOI remains a placeholder."
+message: "Please cite the software and accompanying article. DOI remains a placeholder pending post-publication finalization."
 type: software
 title: "A209933: decimal divisor digits, classification and exact finite verification"
 version: v1.0
+date-released: '2026-11-24'
 authors:
   - family-names: Corti
     given-names: Carlo

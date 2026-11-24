@@ -2,11 +2,13 @@
 
 Carlo Corti, November 2026. Sources prepared 23 November 2026;
 published on the repository's default branch on 24 November 2026.
-Intended first software version: `v1.0`; manuscript: `paper/A209933_v4.tex`.
+Software version: `v1.0`, released 24 November 2026;
+provisional manuscript: `paper/A209933_v4.tex`.
 Repository: <https://github.com/carcorti/A209933>.
-No tag or GitHub release has been created. Release `v1.0` awaits separate author
-authorization. The DOI `10.5281/zenodo.xxxxxxxx` remains a literal placeholder;
-no Zenodo deposit is claimed. The supplied MIT license is preserved.
+Release: <https://github.com/carcorti/A209933/releases/tag/v1.0>.
+The DOI `10.5281/zenodo.xxxxxxxx` remains a literal placeholder until separate
+post-publication finalization with the verified designated Zenodo locator.
+The supplied MIT license is preserved.
 
 A209933 consists of positive integers divisible by every digit of every positive
 divisor. A zero digit fails the condition. Write `R_t = (10^t - 1)/9` and
@@ -202,13 +204,13 @@ To typeset separately when desired, run `pdflatex` three times on
 No PDF is included in this local draft. All scientific statements, bibliography
 and author identity match version 3; only the availability paragraph was updated.
 
-Package checksums describe this branch snapshot. The local pre-upload audit exercises
+Package checksums describe this release payload. The local pre-upload audit exercises
 the bounded commands above in fresh clone-like and extracted-archive roots,
 including missing, changed and unexpected-file controls. This establishes only
 the local bytes; actual GitHub/Zenodo distribution verification is a separate
 post-publication step. Before each later GitHub release, the author must confirm
 the repository/tag-specific Zenodo account connection and enabled repository
-synchronization. For this branch publication, the author reported that Zenodo is
-linked but synchronization is not enabled. No tag, release or synchronization
-action follows from the branch upload. The pre-upload audit does not satisfy
-the future release confirmation.
+synchronization. On 24 November 2026 the author confirmed the linked account and
+enabled synchronization for `carcorti/A209933`, tag `v1.0`, and authorized this
+release. The resulting Zenodo deposit and actual distributed archives require
+their own verification; the account confirmation alone does not certify them.
