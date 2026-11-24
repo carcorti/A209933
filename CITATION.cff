@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "Please cite the software and accompanying article. Release v1.0 is planned; DOI remains a placeholder."
+type: software
+title: "A209933: decimal divisor digits, classification and exact finite verification"
+version: v1.0
+authors:
+  - family-names: Corti
+    given-names: Carlo
+    email: carlo.corti@outlook.com
+repository-code: "https://github.com/carcorti/A209933"
+url: "https://doi.org/10.5281/zenodo.xxxxxxxx"
+doi: 10.5281/zenodo.xxxxxxxx
+license: MIT
+abstract: >-
+  Sources, pinned Lean proofs and Python verification for the classification
+  of positive integers divisible by every decimal digit of every positive
+  divisor. Includes the exact adopted prefix through index 46, independently
+  verified below 10^24, and a reproducible auxiliary catalog-based derivation
+  through index 101 with explicitly external primality and coverage premises.
+keywords:
+  - OEIS A209933
+  - OEIS A182183
+  - repunit primes
+  - decimal digits
+  - Lean
+  - exact computation
+preferred-citation:
+  type: article
+  title: "Decimal Divisor Digits and Prime Repunits: A Classification of OEIS A209933"
+  authors:
+    - family-names: Corti
+      given-names: Carlo
+      email: carlo.corti@outlook.com
+  year: 2026
+  doi: 10.5281/zenodo.xxxxxxxx
+  url: "https://doi.org/10.5281/zenodo.xxxxxxxx"

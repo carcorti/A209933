@@ -1,0 +1,376 @@
+{
+  "status": "PASS",
+  "scope": "Delta cycle1; catalog lexical admission and finite evidence supplements only",
+  "source_sha256": "885b1ed8ad71134d4c5579cb404ac466f2f5c98ceb968679bae4ed1d783a9d64",
+  "verifier_sha256": "c0aa28758d66ca0be9ca6b03909766c5e92e7ae78d27ae0c27315c6ff76da76e",
+  "harness_sha256": "cfa11d8a12c89c784f2bc3f053ee46de2d56436a04f187dfc8899ebfcd3deb77",
+  "runtime": {
+    "implementation": "CPython",
+    "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "executable_sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+    "platform": "Linux-6.17.0-42-generic-x86_64-with-glibc2.39",
+    "byteorder": "little",
+    "stdlib": "installed standard library; not independently hashed"
+  },
+  "observations": [
+    {
+      "id": "separator-0",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-1",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-2",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-3",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-4",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-5",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-6",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-7",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-8",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-11",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-12",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-13",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-14",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-15",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-16",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-17",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-18",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-19",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-20",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-21",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-22",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-23",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-24",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-25",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-26",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-27",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-28",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-29",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-30",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-31",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-127",
+      "result": "REJECTED"
+    },
+    {
+      "id": "separator-128",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-0",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-1",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-2",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-3",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-4",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-5",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-6",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-7",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-8",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-9",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-10",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-11",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-12",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-13",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-14",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-15",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-16",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-17",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-18",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-19",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-20",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-21",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-22",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-23",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-24",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-25",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-26",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-27",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-28",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-29",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-30",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-31",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-127",
+      "result": "REJECTED"
+    },
+    {
+      "id": "coverage-128",
+      "result": "REJECTED"
+    },
+    {
+      "id": "CLI-separator-11",
+      "producer_exit": 2,
+      "checker_exit": 2,
+      "output_exists": false,
+      "producer_stderr": "ERROR: catalog requires printable ASCII, tabs and LF\n",
+      "checker_stderr": "ERROR: catalog requires printable ASCII, tabs and LF\n"
+    },
+    {
+      "id": "CLI-separator-12",
+      "producer_exit": 2,
+      "checker_exit": 2,
+      "output_exists": false,
+      "producer_stderr": "ERROR: catalog requires printable ASCII, tabs and LF\n",
+      "checker_stderr": "ERROR: catalog requires printable ASCII, tabs and LF\n"
+    },
+    {
+      "id": "CLI-separator-28",
+      "producer_exit": 2,
+      "checker_exit": 2,
+      "output_exists": false,
+      "producer_stderr": "ERROR: catalog requires printable ASCII, tabs and LF\n",
+      "checker_stderr": "ERROR: catalog requires printable ASCII, tabs and LF\n"
+    },
+    {
+      "id": "CLI-coverage-0",
+      "producer_exit": 2,
+      "checker_exit": 2,
+      "output_exists": false,
+      "producer_stderr": "ERROR: catalog requires printable ASCII, tabs and LF\n",
+      "checker_stderr": "ERROR: catalog requires printable ASCII, tabs and LF\n"
+    },
+    {
+      "id": "CLI-coverage-9",
+      "producer_exit": 2,
+      "checker_exit": 2,
+      "output_exists": false,
+      "producer_stderr": "ERROR: catalog metadata must be printable ASCII\n",
+      "checker_stderr": "ERROR: catalog metadata must be printable ASCII\n"
+    },
+    {
+      "id": "catalog-byte-maximum",
+      "accepted_bytes": 65536
+    },
+    {
+      "id": "catalog-byte-first-rejected",
+      "rejected_bytes": 65537
+    },
+    {
+      "id": "named134-preflight",
+      "bytes": 159374652,
+      "note": "No maximum-sized output generated; unchanged numeric/resource checks inherited."
+    },
+    {
+      "id": "JSON-max-depth32767",
+      "fixture_bytes": 65534,
+      "exit": 2,
+      "stderr": "ERROR: maximum recursion depth exceeded while decoding a JSON array from a unicode string\n"
+    }
+  ],
+  "actual_observation_count": 75,
+  "new_exact_candidate_T101_measurement": {
+    "target": 101,
+    "synthetic": false,
+    "producer_wall_seconds": 0.18251750899980834,
+    "standalone_verifier_wall_seconds": 0.17106739400060178,
+    "combined_wall_seconds": 0.3535849030004101,
+    "producer_cpu_seconds": 0.16,
+    "producer_peak_rss_bytes": 20185088,
+    "verifier_peak_rss_bytes": 19972096,
+    "table": {
+      "status": "PASS",
+      "mode": "DERIVATION",
+      "rows": 101,
+      "bytes": 2708884,
+      "sha256": "2768468ad0f9a808e0e82bf43f6ecd16009e72c37e50d5dfcae038d39aa72fbc"
+    },
+    "producer_stdout": "{\"event\": \"START\", \"target\": 101, \"synthetic\": false}\n{\"event\": \"COMPLETE\", \"rows\": 101, \"bytes\": 2708884, \"sha256\": \"2768468ad0f9a808e0e82bf43f6ecd16009e72c37e50d5dfcae038d39aa72fbc\"}\n",
+    "producer_time_v": "\tCommand being timed: \"/usr/bin/python3 -B /home/carlo/MATH/OEIS/A209933/src/a209933.py --catalog /tmp/a209933-review-after-pvai81ld/good.tsv --through 101 --out outputs/rev01/replay\"\n\tUser time (seconds): 0.16\n\tSystem time (seconds): 0.00\n\tPercent of CPU this job got: 96%\n\tElapsed (wall clock) time (h:mm:ss or m:ss): 0:00.18\n\tAverage shared text size (kbytes): 0\n\tAverage unshared data size (kbytes): 0\n\tAverage stack size (kbytes): 0\n\tAverage total size (kbytes): 0\n\tMaximum resident set size (kbytes): 19712\n\tAverage resident set size (kbytes): 0\n\tMajor (requiring I/O) page faults: 0\n\tMinor (reclaiming a frame) page faults: 2986\n\tVoluntary context switches: 19\n\tInvoluntary context switches: 15\n\tSwaps: 0\n\tFile system inputs: 0\n\tFile system outputs: 5304\n\tSocket messages sent: 0\n\tSocket messages received: 0\n\tSignals delivered: 0\n\tPage size (bytes): 4096\n\tExit status: 0\n",
+    "verifier_time_v": "\tCommand being timed: \"/usr/bin/python3 -B /home/carlo/MATH/OEIS/A209933/check/verify.py --catalog /tmp/a209933-review-after-pvai81ld/good.tsv --run outputs/rev01/replay\"\n\tUser time (seconds): 0.16\n\tSystem time (seconds): 0.00\n\tPercent of CPU this job got: 99%\n\tElapsed (wall clock) time (h:mm:ss or m:ss): 0:00.17\n\tAverage shared text size (kbytes): 0\n\tAverage unshared data size (kbytes): 0\n\tAverage stack size (kbytes): 0\n\tAverage total size (kbytes): 0\n\tMaximum resident set size (kbytes): 19504\n\tAverage resident set size (kbytes): 0\n\tMajor (requiring I/O) page faults: 0\n\tMinor (reclaiming a frame) page faults: 2930\n\tVoluntary context switches: 5\n\tInvoluntary context switches: 18\n\tSwaps: 0\n\tFile system inputs: 0\n\tFile system outputs: 0\n\tSocket messages sent: 0\n\tSocket messages received: 0\n\tSignals delivered: 0\n\tPage size (bytes): 4096\n\tExit status: 0\n",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "/home/carlo/MATH/OEIS/A209933/src/a209933.py",
+      "--catalog",
+      "/tmp/a209933-review-after-pvai81ld/good.tsv",
+      "--through",
+      "101",
+      "--out",
+      "outputs/rev01/replay"
+    ],
+    "timeout_seconds": 600
+  },
+  "delta_proof": "Exact replacement match: catalog controls/LF split/metadata printability only; full producer identical",
+  "scratch_removed": true,
+  "retained_replay": "outputs/rev01/replay"
+}

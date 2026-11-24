@@ -1,0 +1,111 @@
+ℹ [2152/2169] Replayed A209933.Model
+info: A209933/Model.lean:148:0: 'A209933.long_division' depends on axioms: [propext]
+info: A209933/Model.lean:149:0: 'A209933.digits_append' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: A209933/Model.lean:150:0: 'A209933.quotients_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [2156/2169] Replayed A209933.Initial
+info: A209933/Initial.lean:11:0: A209933.init_1 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 1 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 1
+info: A209933/Initial.lean:16:0: A209933.init_2 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 2 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 2
+info: A209933/Initial.lean:21:0: A209933.init_3 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 3 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 3
+info: A209933/Initial.lean:26:0: A209933.init_4 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 4 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 4
+info: A209933/Initial.lean:31:0: A209933.init_5 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 5 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 5
+info: A209933/Initial.lean:36:0: A209933.init_6 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 6 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 6
+info: A209933/Initial.lean:41:0: A209933.init_7 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 7 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 7
+info: A209933/Initial.lean:46:0: A209933.init_8 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 8 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 8
+info: A209933/Initial.lean:51:0: A209933.init_9 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 9 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 9
+info: A209933/Initial.lean:56:0: A209933.init_12 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 12 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 12
+info: A209933/Initial.lean:61:0: A209933.init_14 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 14 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 14
+info: A209933/Initial.lean:66:0: A209933.init_15 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 15 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 15
+info: A209933/Initial.lean:71:0: A209933.init_18 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 18 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 18
+info: A209933/Initial.lean:76:0: A209933.init_21 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 21 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 21
+info: A209933/Initial.lean:81:0: A209933.init_24 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 24 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 24
+info: A209933/Initial.lean:86:0: A209933.init_28 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 28 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 28
+info: A209933/Initial.lean:91:0: A209933.init_35 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 35 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 35
+info: A209933/Initial.lean:96:0: A209933.init_36 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 36 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 36
+info: A209933/Initial.lean:101:0: A209933.init_42 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 42 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 42
+info: A209933/Initial.lean:106:0: A209933.init_45 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 45 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 45
+info: A209933/Initial.lean:111:0: A209933.init_56 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 56 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 56
+info: A209933/Initial.lean:116:0: A209933.init_63 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 63 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 63
+info: A209933/Initial.lean:121:0: A209933.init_72 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 72 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 72
+info: A209933/Initial.lean:126:0: A209933.init_84 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 84 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 84
+info: A209933/Initial.lean:131:0: A209933.init_105 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 105 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 105
+info: A209933/Initial.lean:136:0: A209933.init_126 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 126 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 126
+info: A209933/Initial.lean:141:0: A209933.init_168 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 168 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 168
+info: A209933/Initial.lean:146:0: A209933.init_252 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 252 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 252
+info: A209933/Initial.lean:151:0: A209933.init_315 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 315 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 315
+info: A209933/Initial.lean:156:0: A209933.init_504 (a : Fin 9) (b c d : Fin 10) :
+  fastQ 504 ((↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d) = true →
+    (↑a + 1) * 1000 + ↑b * 100 + ↑c * 10 + ↑d ∈ initialWords 504
+info: A209933/Initial.lean:206:0: 'A209933.initial_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [2158/2169] Replayed A209933.Finite
+info: A209933/Finite.lean:42:0: 'A209933.initial_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: A209933/Finite.lean:43:0: 'A209933.live_step_certificate' depends on axioms: [propext, Quot.sound]
+info: A209933/Finite.lean:44:0: 'A209933.small_certificate' depends on axioms: [propext, Quot.sound]
+ℹ [2160/2169] Replayed A209933.Reach
+info: A209933/Reach.lean:111:0: 'A209933.quotient_classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: A209933/Reach.lean:112:0: 'A209933.predicate_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [2164/2169] Replayed A209933.Family
+info: A209933/Family.lean:114:0: 'A209933.prime_repunit_predicate' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [2166/2169] Replayed A209933.Classify
+info: A209933/Classify.lean:97:0: 'A209933.necessary' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: A209933/Classify.lean:98:0: 'A209933.classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [2168/2169] Built A209933.Relations (720ms)
+info: A209933/Relations.lean:65:0: 'A209933.divisor_closed_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (2169 jobs).

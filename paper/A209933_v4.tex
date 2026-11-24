@@ -1,0 +1,753 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage{microtype}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=blue,urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\title{Decimal Divisor Digits and Prime Repunits: A Classification of OEIS A209933}
+\author{Carlo Corti\\Independent researcher\\
+\href{mailto:carlo.corti@outlook.com}{\texttt{carlo.corti@outlook.com}}}
+\date{November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+OEIS A209933 consists of the positive integers divisible by every digit
+of every positive divisor. We classify these integers as thirteen small
+values and the products of a decimal prime repunit by one of eleven fixed
+coefficients. The proof reduces the divisor condition to quotient-digit
+constraints indexed by the greatest common divisor with \(2520\).
+Finite certificates and a transition argument cover arbitrary decimal
+lengths. The classification and the identity obtained by deleting \(48\)
+to give OEIS A182183 are verified in Lean. A finite enumeration independent
+of the classification and the repunit catalog finds exactly \(46\) solutions
+below \(10^{24}\). It proves that the term after \(264\) is the \(19\)-digit
+repunit and extends the historical \(24\)-term prefix by \(22\) indexed
+values. Conditional on published repunit primality proofs and reported
+search coverage, the classification also determines the values and ranks
+through index \(101\).
+\end{abstract}
+
+\noindent\textit{2020 Mathematics Subject Classification.}
+Primary 11A63. Secondary 11A51, 11B83.
+
+\noindent\textit{Key words and phrases.}
+Decimal digits, divisibility, prime repunits, finite-state verification,
+integer sequences, Lean.
+
+\section{Introduction}\label{sec:intro}
+
+For a positive integer \(d\), let \(D(d)\) be the set of digits of its
+ordinary decimal expansion. Define \(P(n)\) for \(n\ge 0\) by requiring
+\(n>0\) and
+\[
+ \text{for every positive }d\mid n\text{ and every }c\in D(d),
+ \qquad c>0\ \text{and}\ c\mid n.
+\]
+The increasing enumeration of \(\{n:P(n)\}\), indexed from \(1\), is
+\((a(k))\), OEIS A209933 \cite{oeis209933}. For example, \(48\) satisfies
+\(P\). The union of the digit sets of its divisors is
+\(\{1,2,3,4,6,8\}\), and these digits all divide \(48\). The digit \(6\)
+in its divisor \(16\) need only divide the parent \(48\).
+
+Write \(R_t=(10^t-1)/9\) for the decimal repunit of length \(t\ge 1\).
+The A209933 entry at revision 27 lists \(24\) terms ending at \(264\),
+conjectures \(a(25)=R_{19}\), and records that A209933 contains all
+prime repunits, the values of A004022 \cite{oeis209933,oeis004022}.
+On 29 September 2024, Brown reported that any further term exceeds
+\(10^{11}\). His linked program uses a factor sieve followed by digit
+checks on the divisors \cite{oeis209933,brown}. In A182183,
+\(R_{19},2R_{19},\ldots,8R_{19}\) already occupied ranks \(24\)--\(31\),
+credited to Charles R Greathouse~IV in 2012 \cite{oeis182183}.
+These values give known members of A209933. Their ranks in A209933
+require excluding intervening values under its weaker divisor-digit
+condition. Section~\ref{sec:class} establishes the full classification,
+and Section~\ref{sec:finite} proves the ranks in the adopted prefix
+independently of that classification.
+
+A209933 is a subsequence of A034838, whose membership test uses the
+digits of the integer itself \cite{oeis209933,oeis034838}. Branicky's
+automata for the corresponding counts by length, A346267, use
+remainders and information about permitted digits \cite{oeis346267}.
+The states used here instead record enough information to check the
+digits emitted by several long divisions at once.
+
+\section{Classification}\label{sec:class}
+
+Let \(B=\{1,2,3,4,5,6,7,8,9,12,24\}\).
+
+\begin{theorem}\label{thm:class}
+For every nonnegative integer \(n\),
+\[
+ P(n)
+ \quad\Longleftrightarrow\quad
+ n\in B\cup\{15,48\}
+ \ \text{or}\
+ n=mR_t\text{ for some }m\in B\text{ and prime }R_t.
+\]
+\end{theorem}
+
+\subsection{Quotient digits and a finite transition table}
+
+Since \(M=\operatorname{lcm}(1,\ldots,9)=2520\), a nonzero digit divides
+\(n\) exactly when it divides \(g=\gcd(n,M)\). If \(10\mid g\), then
+\(10\mid n\), and the last digit of the divisor \(n\) is zero. Hence
+a solution requires \(10\nmid g\). The \(48\) positive divisors of
+\(2520=2^3 3^2 5\cdot7\) include \(18\) multiples of \(10\), leaving
+\(30\) eligible classes. For an eligible class \(g\), put
+\[
+ S_g=\{c:1\le c\le9,\ c\mid g\},\qquad
+ \mathcal C_g=\{x>0:g\mid x,\ D(x/d)\subseteq S_g\text{ for every }d\mid g\}.
+\]
+Here and below divisors of a positive integer are positive. For a true
+term \(n\) and its actual class \(g\), every \(n/d\) with \(d\mid g\)
+is a divisor of \(n\), so \(n\in\mathcal C_g\). The relaxed set
+\(\mathcal C_g\) also admits \(x\) with \(\gcd(x,M)\ne g\).
+
+Write \(u\) for a positive decimal prefix and append a digit \(c\).
+For \(d\mid g\), long division gives
+\begin{equation}\label{eq:division}
+ \left\lfloor\frac{10u+c}{d}\right\rfloor
+ =10\left\lfloor\frac{u}{d}\right\rfloor
+   +\left\lfloor\frac{10(u\bmod d)+c}{d}\right\rfloor .
+\end{equation}
+The last floor lies between \(0\) and \(9\). A positive quotient of a
+prefix is a prefix of the corresponding final quotient. In detail, if
+\(u=\lfloor x/10^k\rfloor\), then
+\(\lfloor u/d\rfloor=\lfloor \lfloor x/d\rfloor/10^k\rfloor\).
+A zero quotient at this stage represents an empty prefix. All quotients
+are positive once \(u\ge1000\). The bound \(d\le g\le504<1000\)
+holds because a class without a factor \(5\) divides \(504\), while
+a class with a factor \(5\) is odd and divides \(315\).
+
+For \(u\ge1000\), use the state \(r=u\bmod g\). Because \(d\mid g\),
+the new digit in \eqref{eq:division} is
+\(\lfloor(10(r\bmod d)+c)/d\rfloor\). Thus a transition with
+\(1\le c\le9\) is allowed exactly when every emitted digit lies in \(S_g\). In particular,
+\(d=1\) emits \(c\) itself, forcing \(c\in S_g\). Its destination is
+\((10r+c)\bmod g\), and the accepting state is \(r=0\).
+For example, take \(g=d=12\). The prefix \(1\) has quotient zero,
+meaning that no quotient digit has yet appeared. At prefix \(1333\),
+the quotient is \(111\) and the remainder is \(1\). Appending \(2\)
+emits the digit \(1\) in this division, giving quotient \(1111\) and
+remainder \(0\) at \(13332\). The initialization tests all four-digit
+prefixes by their integer quotients, including those with nonzero
+initial remainder.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Class \(g\) & Four-digit prefixes (remainder) & All allowed transitions\\
+\midrule
+\(1,\ldots,8\) & \(1111\cdot g\ (0)\) & \(0\xrightarrow{g}0\)\\
+\(9\) & \(1199\ (2),\ 9999\ (0)\) & \(2\xrightarrow{9}2,\ 0\xrightarrow{9}0\)\\
+\(12\) & \(1332\ (0),\ 1333\ (1)\) & \(1\xrightarrow{2}0,\ 1\xrightarrow{3}1\)\\
+\(18\) & \(1999\ (1)\) & \(1\xrightarrow{9}1\)\\
+\(24\) & \(2664\ (0),\ 2666\ (2)\) & \(2\xrightarrow{4}0,\ 2\xrightarrow{6}2\)\\
+\(36\) & \(3999\ (3)\) & \(3\xrightarrow{9}3\)\\
+Other eligible \(g\) & none & no reachable states\\
+\bottomrule
+\end{tabular}
+\caption{Initialization and transitions for the quotient-digit test.
+The row \(1,\ldots,8\) applies separately to each class. The parenthesized value is the
+state \(u\bmod g\). An arrow's label is the appended digit. A state
+with no arrow has no allowed extension.}
+\label{tab:states}
+\end{table}
+
+Here is the complete prescription for checking the finite certificates.
+For each eligible \(g\), form its divisors and \(S_g\). For each
+\(u=1000,\ldots,9999\), include \(u\) in the initialization exactly if
+every digit of \(\lfloor u/d\rfloor\) belongs to \(S_g\) for all
+\(d\mid g\). This requires \(30\cdot9000\) prefix tests. For each
+resulting remainder, try the nine digits in the transition rule.
+Table~\ref{tab:states} records all \(16\) initialized prefixes and
+all \(16\) allowed edges across the classes. Each destination occurs
+among the initialized remainders of its class, which closes the table
+under further extensions. For \(1\le u<1000\), test only multiples
+of \(g\) with the same whole-quotient digit rule. The small accepted
+values are \(g,11g,111g\) for \(g=1,\ldots,9\), \(12,132\) for
+\(g=12\), \(15\) for \(g=15\), and \(24,48,264\) for \(g=24\). All
+other classes have empty small lists. The project diagnostic
+\verb|python3 -B check/language.py| checks these lists and the
+transition table by direct quotient tests \cite{project}. For
+example, \(999\in\mathcal C_9\), but its divisor \(27\) contains \(2\),
+which does not divide \(999\). The full predicate can thus reject a
+word that passes the quotient filter.
+
+\begin{lemma}\label{lem:language}
+For \(g\in B\), the set \(\mathcal C_g\) consists of \(gR_t\) for
+\(t\ge1\), together with \(48\) when \(g=24\).
+For \(g=15\), it consists of \(15\) alone.
+For all remaining eligible classes it is empty.
+\end{lemma}
+
+\begin{proof}
+At the four-digit start \(u\), each quotient is positive and, by the
+truncation identity, its digits are a prefix of the corresponding
+final quotient. Thus a word passing the quotient test starts in
+Table~\ref{tab:states}. The induction invariant is that the state
+equals the current prefix modulo \(g\) and that all quotient digits
+read so far belong to \(S_g\). By \eqref{eq:division}, this condition
+extends by one digit exactly along a listed edge. Every destination
+again occurs among the initialized states, so induction covers any
+number of appended digits in both directions. At termination, remainder
+zero enforces \(g\mid x\).
+
+For \(g=1,\ldots,8\) all accepting words repeat \(g\). For \(g=9\) the
+loop at \(0\) gives the words of repeated \(9\)s, while the loop at
+\(2\) never accepts. The \(g=18,36\) loops also never accept. For
+\(g=12\), an accepted word of length \(h\ge4\) has a leading \(1\),
+\(h-2\) copies of \(3\), and a final \(2\). At length four this is
+\(1332\). Longer words start with \(1333\), repeat the loop on \(3\)
+as needed and exit on \(2\). Increasing the length by one inserts a
+\(3\) before the last digit, taking the value \(x\) to \(10x+12\).
+Thus the value is \(12R_{h-1}\). For \(g=24\), the length-four word
+is \(2664\). Longer words start with \(2666\), repeat the loop on
+\(6\) and exit on \(4\), giving \(24R_{h-1}\) by \(x\mapsto10x+24\).
+In these two classes the accepting state is terminal. The separate
+small lists complete the claim.
+\end{proof}
+
+\subsection{Excluding composite repunits and proving the converse}
+
+\begin{proof}[Proof of Theorem~\ref{thm:class}]
+Suppose \(P(n)\). Lemma~\ref{lem:language} with \(g=\gcd(n,2520)\)
+gives \(n=15\), \(n=48\), or \(n=gR_t\) with \(g\in B\). For \(t=1\)
+the last form gives \(n=g\). If \(t\ge2\) and \(R_t=uv\) with
+\(u,v>1\), then \(u,v\) are odd. For each \(d\mid g\), both \(gu/d\)
+and \(gv/d\) divide the original \(n\). Their digits therefore lie
+in \(S_g\), so \(gu,gv\in\mathcal C_g\). The exception \(48\) in
+\(\mathcal C_{24}\) would give a factor \(2\) of the odd \(R_t\).
+Hence \(u\) and \(v\) are both repunits of length at least two.
+Their product ends in \(21\), since \(11^2\equiv21\pmod{100}\).
+But \(R_t\) ends in \(11\), a contradiction. The argument uses only
+divisors of \(n\) and the permitted digits for \(n\).
+
+For the converse, \(B\) is closed under taking positive divisors.
+Every member of \(B\) is divisible by its own nonzero digits: this is
+immediate for the one-digit members and follows by inspection for
+\(12\) and \(24\). If \(d\mid m\) with \(m\in B\), then \(d\in B\)
+and each digit of \(d\) divides \(d\) and hence \(m\). Thus \(P(m)\)
+holds for \(m\in B\). The divisors of \(15\) are \(1,3,5,15\), and their
+digits divide \(15\). The digit check for \(48\) was given in
+Section~\ref{sec:intro}.
+Now let \(p=R_t\) be prime and \(m\in B\). Then \(p\ge11\), while the
+prime factors of \(m\) belong to \(\{2,3,5,7\}\), so the divisors of
+\(mp\) are exactly \(d\) and \(dp\) for \(d\mid m\). For \(d\le9\),
+\(dR_t\) repeats the digit \(d\). For \(d=12\) or \(24\), its digits
+are among \(\{1,2,3\}\) or \(\{2,4,6\}\), respectively. This follows
+from \(12R_2=132\), \(24R_2=264\), and the patterns in the
+proof of the lemma for
+\(t\ge3\). In all cases each such digit divides \(d\).
+The digits of \(d\) itself also divide \(d\). This proves \(P(mp)\).
+\end{proof}
+
+\section{The exact relation to A182183}
+
+A182183 consists of positive integers \(n\) such that every positive
+divisor \(d\) of \(n\) is divisible by every decimal digit of every
+positive divisor \(e\) of \(d\) \cite{oeis182183}. A zero digit makes
+the test fail, since \(0\nmid d\) for \(d>0\). In our notation the
+condition is \(P(d)\) for every \(d\mid n\). One can also test
+whether each divisor of \(n\) is divisible by its own digits.
+Indeed, for \(e\mid d\mid n\), each digit of \(e\) then divides \(e\)
+and hence \(d\). In the reverse direction use \(e=d\) in \(P(d)\).
+
+\begin{corollary}\label{cor:relation}
+For every nonnegative integer \(n\),
+\[
+ \bigl(\forall d\ge0,\ d\mid n\ \Longrightarrow\ P(d)\bigr)
+ \quad\Longleftrightarrow\quad
+ P(n)\ \land\ n\ne48 .
+\]
+Thus the value set of A182183 is obtained from A209933 by deleting \(48\).
+\end{corollary}
+
+\begin{proof}
+The left-hand condition implies \(P(n)\) by taking \(d=n\), so it
+also excludes \(n=0\). It fails at \(48\) since \(16\mid48\) and the
+digit \(6\) of \(16\) does not divide \(16\). In the reverse
+direction apply Theorem~\ref{thm:class}. The divisors of \(m\in B\)
+stay in \(B\), and the proper divisors of \(15\) are in \(B\).
+Every divisor of \(mR_t\) with \(R_t\) prime is either in \(B\) or has
+the same prime-repunit form with coefficient in \(B\). Each of these
+divisors satisfies \(P\).
+\end{proof}
+
+Since \(a(17)=48\), the term of A182183 at rank \(k\) equals \(a(k)\)
+for \(1\le k<17\), and \(a(k+1)\) for every \(k\ge17\) for which
+\(a(k+1)\) exists. The A182183 entry records the inclusion, the
+exclusion of \(48\), and closure under divisors. Greathouse also
+identifies its divisibility-minimal members greater than \(1\) with
+A116692, the primes with one distinct decimal digit
+\cite{oeis182183,oeis116692}. Corollary~\ref{cor:relation} identifies
+the entire set difference. The earlier A182183 ranks cited in
+Section~\ref{sec:intro} can therefore be transferred with the
+one-position shift.
+
+\section{Formal verification}
+
+The Lean project \cite{project} proves Theorem~\ref{thm:class} as
+\texttt{A209933.classification}. The definition \texttt{Predicate n}
+requires \(0<n\) and, for every \(d\mid n\), tests \(0<c\) and \(c\mid n\)
+for every \(c\) in \texttt{Nat.digits 10 d}. Positivity of \(n\) rules
+out the divisor \(0\). Lean stores decimal digits in reverse order,
+which preserves this universal test. The list \texttt{coefficients}
+is \(B\). The recursive \texttt{repunit} starts at \(R_0=0\) and
+satisfies \(R_{t+1}=10R_t+1\).
+The theorem \texttt{A209933.repunit\_closed} gives the closed formula.
+In the later module \texttt{Relations.lean}, \texttt{DivisorClosed n}
+requires \texttt{Predicate d} for each \(d\mid n\) in the naturals.
+The theorem \texttt{A209933.divisor\_closed\_iff} identifies it with
+\(\texttt{Predicate n}\land n\ne48\), as in Corollary~\ref{cor:relation}.
+
+For \(g>0\), \texttt{quotients\_iff} identifies \texttt{Quotients g x}
+with the quotient-digit condition for all positive \(d\mid g\),
+including divisors greater than \(9\).
+The initial and small-number certificates use the Boolean test
+\texttt{fastQ}. The implication \texttt{fastQ\_of\_quotients} checks
+that every word satisfying the quotient condition also satisfies that
+test. The Python diagnostic \path{check/language.py} checks
+Table~\ref{tab:states} with the whole-quotient test described in
+Section~\ref{sec:class}.
+For the formal all-length implication, the invariant in
+\texttt{quotients\_invariant} says that a surviving word has shape
+\(gR_t+e\) with an allowed offset \(e\), or has one of the dead
+remainders. The theorems \texttt{live\_step\_certificate} and
+\texttt{dead\_step\_certificate} check closure of those cases.
+The zero remainder test extracts the candidate shapes, and the
+formal proof excludes composite repunits and proves the converse.
+
+The builds used Lean 4.36.0 \cite{lean} and Mathlib at
+\path{fc4f59e577feb1a4956671bc04ac18aaaf8cd842}, with transitive
+dependencies pinned in the Lake manifest. The named theorems and
+their transitive dependencies were exported and replayed in an
+empty environment using Lean's own kernel. The retained build logs
+report \texttt{propext} and \texttt{Quot.sound} for the repunit formula.
+The classification and deletion equivalences also use
+\texttt{Classical.choice}. Finite decisions use kernel reduction.
+The audited proof dependencies consist of those standard axioms and
+proved declarations. The attempted Lean4Lean check stopped at a
+format incompatibility.
+
+The formal scope covers the three named results. The proof of the rank
+formula is given in Section~\ref{sec:catalog}. Assigning ranks to
+particular large prime repunits additionally requires external catalog
+coverage. The Lean theorems use \texttt{Nat.Prime} as a mathematical
+predicate. Particular primality certificates and the numerical tests
+have separate evidence. The full pinned source tree and the original
+build, axiom and replay records are retained with the project. Rebuilding
+requires acquiring the pinned dependencies and regenerating or retrieving
+their build artifacts. A reviewer reported that compiling the short-case
+certificate exhausted a container's memory limit of about \(3\) GB.
+With the proof split by class, the reviewer reported a successful build
+and replay using the pinned toolchain and Lean's own kernel. The statement
+of the certificate was preserved.
+
+\section{A complete finite check below \texorpdfstring{\(10^{24}\)}{10 to the 24th power}}\label{sec:finite}
+
+\begin{theorem}\label{thm:finite}
+Exactly \(46\) positive integers below \(10^{24}\) satisfy \(P\).
+The first \(24\) agree with the historical A209933 prefix.
+The remaining \(22\), in increasing order, are the products of \(R_{19}\)
+by the increasing members of \(B\), followed by the products of
+\(R_{23}\) by those same coefficients.
+\end{theorem}
+
+\subsection{Local primality certificates}
+
+For \(p=R_{19}\) and \(p=R_{23}\), the audit used a full-order
+Lucas criterion (see Lehmer \cite{lehmer}). For each \(p\), the
+factors in the following decompositions were proved prime by trial
+division through their integer square roots:
+\begin{align*}
+ R_{19}-1
+   &=2\cdot3^2\cdot5\cdot7\cdot11\cdot13\cdot19\cdot37
+     \cdot52579\cdot333667,\\
+ R_{23}-1
+   &=2\cdot5\cdot11^2\cdot23\cdot4093\cdot8779
+     \cdot21649\cdot513239 .
+\end{align*}
+For \(p=R_{19}\) take the base \(b=3\), and for \(p=R_{23}\) take
+\(b=11\). In both cases modular exponentiation gives
+\[
+ b^{p-1}\equiv1\pmod p,\qquad
+ \gcd\bigl(b^{(p-1)/q}-1,p\bigr)=1
+       \quad\text{for every prime }q\mid p-1.
+\]
+For a prime divisor \(\ell\) of \(p\), the first congruence gives
+\(b^{p-1}\equiv1\pmod\ell\). Thus \(b\) is a unit modulo \(\ell\)
+and its order divides \(p-1\). If this order were a proper divisor,
+it would divide \((p-1)/q\) for some prime \(q\mid p-1\), which
+contradicts the corresponding gcd condition. The order therefore
+equals \(p-1\), and Lagrange's theorem gives \(p-1\mid\ell-1\).
+Since \(2\le\ell\le p\), we get \(\ell=p\), proving primality.
+
+\subsection{Exhaustive filtering and divisor checks}
+
+The independent Python audit uses the elementary necessary
+quotient-prefix condition but does not use the global classification,
+the transition table, the repunit catalog or either materialization
+program. For each eligible \(g\) it starts with the empty prefix and
+appends digits from \(S_g\) up to length \(24\). It retains a prefix
+\(u\) only if for every \(d\mid g\) the whole integer quotient
+\(\lfloor u/d\rfloor\) is either zero or has all digits in \(S_g\).
+For any solution of length at most \(24\) every one of its prefixes
+survives in its true class, by the truncation identity. At each
+length a surviving positive prefix with \(\gcd(u,2520)=g\) is also
+tested as a complete candidate.
+
+For each candidate \(n\), a rejected case has a witnessed divisor
+with a zero digit or a digit failing to divide \(n\). The verifier
+first tries \(21649\mid R_{11}\) and \(2071723\mid R_{17}\).
+These factors exceed the trial-divisor ceiling of \(10000\).
+Each is used only after testing that it divides the candidate and
+contains an offending digit. In the recorded run they supplied
+\(22\) and \(11\) rejections, respectively. The verifier then
+tests divisor pairs exposed by trial divisors up to
+\(\min(10000,\lfloor\sqrt n\rfloor)\). If that covers the entire
+range through \(\lfloor\sqrt n\rfloor\) and no witness occurs,
+the verifier certifies \(P(n)\). For each candidate still unresolved,
+it checks for a split \(n=mp\) with one of the two locally certified
+primes \(p\), \(m\le2520\), and \(\gcd(m,p)=1\). If the split succeeds,
+it checks every divisor \(d\) and \(dp\) with \(d\mid m\).
+The run aborts if the split or the complete acceptance check fails.
+The bound \(10^{24}\) is the range over which this candidate
+disposition was completed.
+
+The execution attempted \(2456\) digit extensions and found \(182\)
+distinct complete candidates. It recorded explicit invalidating
+divisors for \(136\), and complete divisor checks succeeded for the
+other \(46\). The sorted result agrees at every index with the
+adopted b-file and at its first \(24\) indices with the separately
+preserved historical table. As an additional check, we evaluated the two
+lists \((mR_{19}:m\in B)\) and \((mR_{23}:m\in B)\), with \(m\) in
+increasing order, by exact integer multiplication. Their concatenation
+equals the last \(22\) entries of the adopted b-file.
+Table~\ref{tab:ends} gives the endpoints. The completeness of the prefix
+filter and the exhaustive disposition of the candidates
+prove Theorem~\ref{thm:finite}, including the gap from \(264\) to
+\(R_{19}\).
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{@{}rll@{}}
+\toprule
+Index \(k\)&Form & \(a(k)\)\\
+\midrule
+24 & \(24R_2\) & \(264\)\\
+25 & \(R_{19}\) & \(1111111111111111111\)\\
+35 & \(24R_{19}\) & \(26666666666666666664\)\\
+36 & \(R_{23}\) & \(11111111111111111111111\)\\
+46 & \(24R_{23}\) & \(266666666666666666666664\)\\
+\bottomrule
+\end{tabular}
+\caption{The historical endpoint and the two independently checked
+blocks of the adopted prefix. Each block contains the eleven products
+in coefficient order.}
+\label{tab:ends}
+\end{table}
+
+To run the read-only audit, place the adopted b-file at
+\path{data/b209933.txt} and the original historical table at
+\path{outputs/b24.txt}, then run \verb|python3 -B check/audit.py|
+from the project root. The standard-library program compares the
+enumerated values with both tables after enumeration. Its JSON
+output reports both Lucas certificates, all \(136\) divisor witnesses
+and the sorted list of \(46\) solutions. The execution stops if a
+frontier exceeds \(100{,}000\) prefixes or if an elapsed-time check
+reaches the \(60\) second limit.
+
+\section{Ordered blocks and the catalog derivation}\label{sec:catalog}
+
+\subsection{Ordering and exact ranks under catalog coverage}
+
+Let \(t_j\) be the \(j\)-th exponent for which \(R_{t_j}\) is prime,
+where this rank exists, and write \(b_1<\cdots<b_{11}\) for the
+elements of \(B\). If \(t=ab\) with \(a,b>1\), then
+\(R_a>1\) is a proper divisor of \(R_t\) by the geometric-series
+factorization. So every prime-repunit exponent is prime. The first
+one is \(2\). The next is at least \(5\), since \(R_3=111\) is
+composite. All exponents after \(2\) are odd, and adjacent prime
+exponents there differ by at least two. Since
+\(R_{t+2}=100R_t+11>24R_t\), blocks with successive prime-repunit
+exponents are strictly separated.
+
+The thirteen elements of \(B\cup\{15,48\}\) and the eleven
+\(R_2\)-products are disjoint because the latter are multiples of
+\(11\) and the former are not. Together they give exactly the first
+\(24\) terms, ending at \(264\). Consequently, whenever \(j\ge2\)
+and \(t_j\) exists,
+\begin{equation}\label{eq:index}
+ a(11j+2+i)=b_iR_{t_j}\qquad (1\le i\le11).
+\end{equation}
+Equation~\eqref{eq:index} gives the rank of a block once all earlier
+prime repunits are known. Membership of a single block follows
+from its primality and Theorem~\ref{thm:class}.
+
+The longer derivation uses published primality proofs and reported
+exclusion coverage. The base-10 Rprime status table for prime
+exponents from \(3\) through \(10^6\) reports seven proved prime
+repunits and one probable prime, at exponent \(270343\). It labels
+the remaining cases factored or composite and reports zero unchecked
+prime exponents \cite{rprime}. This supplies the external exclusion
+premise for Table~\ref{tab:blocks}. The catalog input to the
+materializer preserves A004023 as its original coverage source.
+Batalov reported a wider search limit of \(10800000\) in that entry
+\cite{oeis004023}. Panzone summarizes
+the first five prime repunits \cite{panzone}. The proofs for
+\(R_{317}\) and \(R_{1031}\) are due to Williams and to Williams
+and Dubner, respectively \cite{williams317,williams}. Underwood's
+\(R_{49081}\) proof is recorded by Primo \cite{primo}.
+Enge certified \(R_{86453}\), and the later certification of
+\(R_{109297}\) was carried out by Underwood and Enge
+\cite{enge,enge109297,cm}. These proof records and the linked
+certificate supplements are external to the local checks.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{@{}rll@{}}
+\toprule
+Exponent \(t\) & A209933 indices & Evidence used here\\
+\midrule
+\(2\)      & within \(1\)--\(24\) & \(R_2=11\), small case\\
+\(19\)     & \(25\)--\(35\) & Local finite check and Lucas proof\\
+\(23\)     & \(36\)--\(46\) & Local finite check and Lucas proof\\
+\(317\)    & \(47\)--\(57\) & Published catalog and proof\\
+\(1031\)   & \(58\)--\(68\) & Published catalog and proof\\
+\(49081\)  & \(69\)--\(79\) & Published catalog and proof\\
+\(86453\)  & \(80\)--\(90\) & Published catalog and proof\\
+\(109297\) & \(91\)--\(101\) & Published catalog and proof\\
+\bottomrule
+\end{tabular}
+\caption{Ordering of prime-repunit products. The first \(R_2\) block
+interleaves with the small values. Ranks after \(46\) use the cited
+primality and catalog premises.}
+\label{tab:blocks}
+\end{table}
+
+Under these premises the last value of the auxiliary table is
+\(24R_{109297}\) at rank \(101\). Under the same reported exclusion
+coverage, a primality proof for \(R_{270343}\) would place its
+products at ranks \(102\)--\(112\). In the November 2026 source
+assessment \(R_{270343}\) remained a probable prime
+\cite{oeis004023,rprime}. Infinitude of decimal prime repunits
+remains open \cite{panzone}.
+
+\subsection{Materialization and local validation}
+
+The materializer emits one row at a time. It uses fixed decimal
+patterns: a repeated digit for \(b_i\le9\), or the patterns for \(12\)
+and \(24\) proved above. The checker constructs each product
+digit by digit from the units place, adding the incoming carry to the
+coefficient, taking the units digit, and passing the tens part to
+the next iteration. Both routines share the admitted set of exponents
+and the order of the blocks. This comparison checks arithmetic and
+decimal serialization with work linear in the number of output
+digits for fixed coefficients.
+
+The 101-row output contains \(2{,}708{,}884\) bytes. In one recorded run,
+generation and a subsequent standalone verification took about \(350\) ms
+in total. The run receipt gives CPython 3.12.3, Linux kernel
+6.17.0-42 and glibc 2.39. The two processes ran in sequence on the
+author's workstation, identified by the author as an AMD Ryzen 9
+7940HS running Linux Mint 22.3. The measurement covers decimal generation,
+verification and file handling. The primality proofs, search for
+prime-repunit exponents and formal verification have separate costs.
+
+The 101-row table was generated and checked before the abrupt jump
+after \(264\) prompted the separate finite audit in
+Section~\ref{sec:finite}. In that later work, the full table was also
+read into exact integers in nine-digit chunks. The audit checked
+\(9n=m(10^t-1)\) for the repunit products after the historical prefix
+and inspected \(643\) divisor occurrences across the \(101\) rows.
+The large cases use the published primality inputs to justify complete
+divisor lists. This audit supplies exact integer and membership
+checks under those premises. Ranks after \(46\) continue to depend
+on the reported catalog coverage. The author adopted the first \(46\)
+terms as the canonical local result and the extent intended for OEIS.
+The longer table documents the catalog-based derivation. The Lean
+proof of the deletion identity in Corollary~\ref{cor:relation} was
+completed after the scope decision.
+
+\section{Conclusion}
+
+The quotient-digit conditions force every solution into a small
+exceptional set or a fixed multiple of a prime repunit. This rigidity
+gives the deletion identity for A182183 and converts ranking after
+the historical prefix into the ordering of prime-repunit exponents.
+The finite audit establishes the conjectured term \(a(25)=R_{19}\)
+and the exact adopted prefix through \(a(46)=24R_{23}\). A further
+five blocks are accessible through published prime-repunit evidence
+and its stated coverage.
+
+\section*{Data availability}
+
+The local publication package contains the adopted 46-term b-file,
+the historical 24-term table, the quotient-table diagnostic, the finite
+audit and its output, the catalog input, materializer and checker,
+and essential execution and verification records. The pinned Lean
+sources are supplied in a compact archive with a checked restoration
+map; dependencies and build artifacts are acquired separately at the
+recorded revisions. The package README gives fresh-root reproduction
+commands and distinguishes retained historical proof checks from a
+new source build. The auxiliary 101-row table is regenerated from
+the supplied sources rather than duplicated in the package; its
+historical receipt and exact-integer audit source and result are included.
+Ranks beyond 46 retain the external premises stated above.
+The GitHub URL in the references identifies the intended public
+repository. This local preparation does not establish remote availability.
+The provisional Zenodo DOI will be replaced with the verified
+designated locator after the first Zenodo publication.
+
+\section*{AI use disclosure}
+
+Large language models were used as research and drafting assistants
+during the A209933 workflow. OpenAI Codex assisted throughout the
+project, and a Google Gemini preliminary analysis suggested the
+quotient-digit filter. The separate Python code review and manuscript
+review used external LLM-based review systems. Their reports identify
+the ChatGPT, Claude, Gemini, Grok, Z.ai GLM, Meta and MiniMax
+families across these activities. Exact model versions were not
+consistently available in the review records.
+
+\paragraph{Mathematical analysis.}
+Codex assisted in developing the classification and its Lean proofs
+and in assessing the source claims. The mathematical evidence is
+the stated argument, the finite certificates and the audited Lean
+theorems with pinned dependencies and replay logs.
+
+\paragraph{Algorithm and code.}
+Codex assisted with the Python materializer, the digit-by-digit
+checker and the finite audit. The separate model-assisted code review
+examined the Python artifacts, including their input handling and
+verification behavior. The numerical claims rely on the
+b-file, executable validation artifacts, Lucas certificates and
+retained execution records. The project notes document conversational
+assistance as part of the provenance.
+
+\paragraph{Manuscript.}
+Codex assisted with drafting, source reconciliation and internal checks.
+Two external rounds of model-based manuscript review examined
+the proof, reproducibility and attribution. These reviews were advisory.
+The formal and computational claims are supported by the proofs,
+programs and execution records described above.
+The author chose the adopted numerical scope and takes full scientific
+responsibility for the mathematical statements, algorithm,
+implementation, numerical results, validation boundaries and
+conclusions.
+
+\clearpage
+\begin{thebibliography}{99}
+\raggedright\sloppy
+
+\bibitem{oeis209933}
+J. Krizek and contributors, \emph{OEIS A209933}, The On-Line
+Encyclopedia of Integer Sequences, submitted 16 April 2012, revision 27
+(29 September 2024). \url{https://oeis.org/A209933}.
+
+\bibitem{brown}
+L. A. Brown, \emph{A209933.py}, Python program, 2024.
+\url{https://github.com/lucasaugustus/oeis/blob/main/A209933.py}.
+
+\bibitem{oeis004022}
+N. J. A. Sloane and contributors, \emph{OEIS A004022}, prime repunits,
+revision 100 (2026). \url{https://oeis.org/A004022/internal}.
+
+\bibitem{oeis182183}
+J. Krizek and contributors, \emph{OEIS A182183}, The On-Line
+Encyclopedia of Integer Sequences, submitted 17 April 2012, terms
+\(24\)--\(31\) contributed by C. R. Greathouse IV on 17 April 2012.
+\url{https://oeis.org/A182183}.
+
+\bibitem{oeis034838}
+E. Friedman and contributors, \emph{OEIS A034838}, integers divisible
+by their own digits. \url{https://oeis.org/A034838/internal}.
+
+\bibitem{oeis346267}
+M. Marcus and contributors, \emph{OEIS A346267}, submitted 12 July
+2021, with automaton constructions by M. S. Branicky.
+\url{https://oeis.org/A346267/internal}.
+
+\bibitem{project}
+C. Corti, \emph{Decimal Divisor Digits and Prime Repunits: A
+Classification of OEIS A209933}, GitHub repository and Zenodo archive,
+2026. \url{https://github.com/carcorti/A209933},
+\url{https://doi.org/10.5281/zenodo.xxxxxxxx}.
+
+\bibitem{oeis116692}
+R. L. Shepherd and contributors, \emph{OEIS A116692}, primes with
+one distinct decimal digit, submitted 22 February 2006.
+\url{https://oeis.org/A116692/internal}.
+
+\bibitem{lean}
+Lean FRO, \emph{The Lean Language Reference}, version 4.36.0.
+\url{https://lean-lang.org/doc/reference/4.36.0/}.
+
+\bibitem{lehmer}
+D. H. Lehmer, \emph{Tests for primality by the converse of Fermat's
+theorem}, Bull. Amer. Math. Soc. \textbf{33} (1927), no.~3, 327--340.
+
+\bibitem{oeis004023}
+N. J. A. Sloane and contributors, \emph{OEIS A004023}, exponents of
+prime repunits, revision 299 (2026), with the search-limit report
+by S. Batalov (2021). \url{https://oeis.org/A004023/internal}.
+
+\bibitem{rprime}
+K. Beschorner and Rprime project contributors, \emph{Rprime project
+and base-10 exponent status table for \(3\) through \(10^6\)},
+consulted 23 November 2026.
+\url{https://www.kurtbeschorner.de/},
+\url{https://www.kurtbeschorner.de/db-status-3-1M.htm}.
+
+\bibitem{williams317}
+H. C. Williams, \emph{Some primes with interesting digit patterns},
+Math. Comp. \textbf{32} (1978), no.~144, 1306--1310.
+
+\bibitem{williams}
+H. C. Williams and H. Dubner, \emph{The primality of \(R_{1031}\)},
+Math. Comp. \textbf{47} (1986), no.~176, 703--711.
+\url{https://doi.org/10.2307/2008184}.
+
+\bibitem{panzone}
+P. A. Panzone, \emph{A remark on prime repunits},
+Rev. Un. Mat. Argentina \textbf{53} (2012), no.~2, 31--35.
+\url{https://inmabb.criba.edu.ar/revuma/pdf/v53n2/v53n2a04.pdf}.
+
+\bibitem{primo}
+M. Martin, \emph{Primo records}, entry for P. Underwood's
+\(R_{49081}\) certificate (2022), page updated 25 February 2023.
+\url{https://www.ellipsa.eu/public/primo/records.html}.
+
+\bibitem{enge}
+A. Enge, \emph{FastECPP over MPI}, in \emph{Mathematical Software:
+ICMS 2024}, Lecture Notes in Comput. Sci. \textbf{14749},
+Springer, 2024, 36--45.
+\url{https://doi.org/10.1007/978-3-031-64529-7_4}.
+Preprint (v2) \url{https://arxiv.org/abs/2404.05506v2}.
+
+\bibitem{enge109297}
+A. Enge, \emph{Primality record with ECPP -- 109297 digits},
+author's report on joint work with P. Underwood (record set in 2025),
+updated 11 February 2026.
+\url{https://enge.math.u-bordeaux.fr/blog/ecpp-109297.html}.
+
+\bibitem{cm}
+A. Enge, \emph{ECPP}, CM project documentation and primality
+certificate supplements, consulted November 2026.
+\url{https://www.multiprecision.org/cm/ecpp.html}.
+
+\end{thebibliography}
+\end{document}

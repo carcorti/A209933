@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "members": [
+    {
+      "member": "arith.lean",
+      "path": "A209933/Arithmetic.lean",
+      "bytes": 1820,
+      "sha256": "3e36b9f0518a269b86bcb86b46054cd529f46e71205fdddebed76173f160bc2c",
+      "mode": "0644"
+    },
+    {
+      "member": "cert.lean",
+      "path": "A209933/Certificate.lean",
+      "bytes": 3137,
+      "sha256": "1d7e7dd2651c70d7af15e81510035ee39849cb55d712f61606054ad9b5dcb2b4",
+      "mode": "0644"
+    },
+    {
+      "member": "Classify.lean",
+      "path": "A209933/Classify.lean",
+      "bytes": 4176,
+      "sha256": "ce8c52cb5aa1ff197920866b12b3c6666e5df7adfd8223055609c7a302436eb8",
+      "mode": "0644"
+    },
+    {
+      "member": "Family.lean",
+      "path": "A209933/Family.lean",
+      "bytes": 4764,
+      "sha256": "586689d5b92fc06bae87a2ca0aa9525f2e4e61fdd384beff5e5ff81f31cf2f18",
+      "mode": "0644"
+    },
+    {
+      "member": "Finite.lean",
+      "path": "A209933/Finite.lean",
+      "bytes": 1632,
+      "sha256": "bc71f5b0318616c65fd87f1955a7e65b90ee2d482de5a2c07286806c158aacfa",
+      "mode": "0644"
+    },
+    {
+      "member": "Initial.lean",
+      "path": "A209933/Initial.lean",
+      "bytes": 9040,
+      "sha256": "f952dd8654d0268f18c62a97ffebf0e61fb79ca08188c9a0688b7aba1a423ef8",
+      "mode": "0644"
+    },
+    {
+      "member": "Model.lean",
+      "path": "A209933/Model.lean",
+      "bytes": 5105,
+      "sha256": "2ed1f3fd99c27df52c75b1280c41906809492487465d1af2f7e2ecd0e64fb9d8",
+      "mode": "0644"
+    },
+    {
+      "member": "Reach.lean",
+      "path": "A209933/Reach.lean",
+      "bytes": 4908,
+      "sha256": "7312086e6e6be163b4dc60f66021c313da099981933926ea10e717b8732b8ad7",
+      "mode": "0644"
+    },
+    {
+      "member": "rel.lean",
+      "path": "A209933/Relations.lean",
+      "bytes": 2328,
+      "sha256": "2de5aa9fd064cfefd5ddf2f6d67dd39f986f5c0902af29ede3447b3a8726d3e2",
+      "mode": "0644"
+    },
+    {
+      "member": "A209933.lean",
+      "path": "A209933.lean",
+      "bytes": 143,
+      "sha256": "55f6160c16b491303ba3dc2f6e26d9727697e61703a401ea6854848f06a5de16",
+      "mode": "0644"
+    },
+    {
+      "member": "pins.json",
+      "path": "lake-manifest.json",
+      "bytes": 3158,
+      "sha256": "93fd66f20adb447a465db568afeafa9bdc7a5d2ce562b2c1201940570e71246f",
+      "mode": "0644"
+    },
+    {
+      "member": "lake.lean",
+      "path": "lakefile.lean",
+      "bytes": 262,
+      "sha256": "c565fa911e1dcf113f7720051b4d945ec4249f56f70eebbabee8420353f20500",
+      "mode": "0644"
+    },
+    {
+      "member": "tool.txt",
+      "path": "lean-toolchain",
+      "bytes": 25,
+      "sha256": "582a63f8f9c5128067b688778c1051cf1464c3ca9d57b9325025c051c29b774a",
+      "mode": "0644"
+    }
+  ]
+}

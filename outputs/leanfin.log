@@ -1,0 +1,3 @@
+'A209933.initial_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A209933.live_step_certificate' depends on axioms: [propext, Quot.sound]
+'A209933.small_certificate' depends on axioms: [propext, Quot.sound]

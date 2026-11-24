@@ -1,0 +1,27 @@
+lean4lean found a problem in A209933.Model:
+failed to read file '/home/carlo/MATH/OEIS/A209933/formal/.lake/build/lib/lean/A209933/Model.olean', incompatible header
+lean4lean found a problem in A209933.Classify:
+failed to read file '/home/carlo/MATH/OEIS/A209933/formal/.lake/build/lib/lean/A209933/Classify.olean', incompatible header
+lean4lean found a problem in A209933.Arithmetic:
+failed to read file '/home/carlo/MATH/OEIS/A209933/formal/.lake/build/lib/lean/A209933/Arithmetic.olean', incompatible header
+lean4lean found a problem in A209933.Family:
+failed to read file '/home/carlo/MATH/OEIS/A209933/formal/.lake/build/lib/lean/A209933/Family.olean', incompatible header
+lean4lean found a problem in A209933.Initial:
+failed to read file '/home/carlo/MATH/OEIS/A209933/formal/.lake/build/lib/lean/A209933/Initial.olean', incompatible header
+lean4lean found a problem in A209933.Certificate:
+failed to read file '/home/carlo/MATH/OEIS/A209933/formal/.lake/build/lib/lean/A209933/Certificate.olean', incompatible header
+lean4lean found a problem in A209933.Reach:
+failed to read file '/home/carlo/MATH/OEIS/A209933/formal/.lake/build/lib/lean/A209933/Reach.olean', incompatible header
+lean4lean found a problem in A209933.Finite:
+failed to read file '/home/carlo/MATH/OEIS/A209933/formal/.lake/build/lib/lean/A209933/Finite.olean', incompatible header
+lean4lean found a problem in A209933:
+failed to read file '/home/carlo/MATH/OEIS/A209933/formal/.lake/build/lib/lean/A209933.olean', incompatible header
+replaying A209933.Model
+replaying A209933.Classify
+replaying A209933.Arithmetic
+replaying A209933.Family
+replaying A209933.Initial
+replaying A209933.Certificate
+replaying A209933.Reach
+replaying A209933.Finite
+replaying A209933

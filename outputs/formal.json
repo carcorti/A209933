@@ -1,0 +1,211 @@
+{
+  "case_id": "A209933",
+  "status": "PASS_COMPLETE_STRUCTURAL_CLASSIFICATION",
+  "closed_at_utc": "2026-11-22T21:34:59.054353+00:00",
+  "authority_quote": "Allora chiudi la prova completa.",
+  "theorems": [
+    "A209933.classification",
+    "A209933.repunit_closed"
+  ],
+  "scope": "For every natural n, exact equivalence with B union {15,48} union {m R_t: m in B and R_t prime}; R_t=(10^t-1)/9. Both directions proved without any bound on n or t.",
+  "B": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    12,
+    24
+  ],
+  "formal_statement": "forall n : Nat, Predicate n iff n in coefficients or n=15 or n=48 or exists m in coefficients, exists t, Nat.Prime (repunit t) and n=m*repunit t",
+  "statement_audit": {
+    "source": "snapshot/A209933 snapshot.md",
+    "definition": "Positive n; all digits of every natural divisor d of n are nonzero and divide n; d=0 cannot divide positive n. Reversed digit ordering does not alter universal membership.",
+    "all_lengths": "Strong induction, initial prefixes 1000..9999, all30 eligible gcd classes, certified transitions and separate n<1000 cases.",
+    "composite_exclusion": "Divisor quotients are inherited only from the original parent; no false hereditary-predicate premise.",
+    "converse": "Prime-product divisor split, divisor closure of B, decimal digit induction and all small exceptions.",
+    "external_math_premises": []
+  },
+  "toolchain": {
+    "lean": "4.36.0",
+    "lean_git_commit": "611c117bfaf7b7ae1cfcf246ce6fba31e8f509e9",
+    "mathlib_git_commit": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+    "transitive_pins": "formal/lake-manifest.json"
+  },
+  "checks": [
+    {
+      "command": "lake build",
+      "cwd": "formal",
+      "exit_code": 0,
+      "log": "outputs/lean.log",
+      "warnings": 0,
+      "jobs": 2170,
+      "source_reported_wall_seconds": {
+        "Initial": 91,
+        "Finite": 22
+      },
+      "full_elapsed_seconds": null
+    },
+    {
+      "command": "lake env leanexport A209933 -- A209933.classification A209933.repunit_closed",
+      "cwd": "formal",
+      "exit_code": 0,
+      "export_sha256": "8326f2342116d6a693859108747330c3d653b26eaabc8454d94fa6df84d0bd7e",
+      "export_bytes": 17302019,
+      "export_format": "3.1.0",
+      "exported_declarations": {
+        "inductive": 247,
+        "def": 1490,
+        "thm": 2528,
+        "axiom": 3,
+        "quot": 4,
+        "opaque": 2
+      }
+    },
+    {
+      "command": "timeout 240s lake env leanchecker --from-export ../outputs/proof.exp",
+      "cwd": "formal",
+      "exit_code": 0,
+      "log": "outputs/leancheck.log",
+      "scope": "Replays the self-contained exported transitive dependency closure in an empty Lean kernel environment; full logical checking, not a second numerical scan."
+    },
+    {
+      "command": "timeout 240s lake env lean4lean --verbose A209933",
+      "cwd": "formal",
+      "exit_code": 1,
+      "log": "outputs/lean4.log",
+      "status": "UNAVAILABLE_FORMAT_INCOMPATIBILITY",
+      "reason": "Installed Lean4Lean binary rejects this toolchain olean header; no independent Lean4Lean PASS claimed."
+    },
+    {
+      "check": "Source scan for sorry/admit/custom axioms/native compiler-trusting shortcuts",
+      "status": "PASS"
+    },
+    {
+      "check": "Transitive axiom list from #print axioms and exported closure",
+      "status": "PASS",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "trust_boundary": "Lean kernel and standard logical axioms propext, Classical.choice, Quot.sound. leanchecker is the Lean kernel replay utility, not an independent kernel implementation. No native-decision/compiler correctness axiom supports these theorems.",
+  "not_claimed": [
+    "Primality of any particular large repunit or completeness of an external catalog",
+    "Infinitude of prime repunits or A209933",
+    "Correctness of separate C/Python production code",
+    "Formal proof of ordering/index formulas or collateral A182183 claim",
+    "New b-file terms, external review or publication"
+  ],
+  "sources": [
+    {
+      "path": "formal/A209933/Arithmetic.lean",
+      "bytes": 1820,
+      "sha256": "3e36b9f0518a269b86bcb86b46054cd529f46e71205fdddebed76173f160bc2c"
+    },
+    {
+      "path": "formal/A209933/Certificate.lean",
+      "bytes": 3137,
+      "sha256": "1d7e7dd2651c70d7af15e81510035ee39849cb55d712f61606054ad9b5dcb2b4"
+    },
+    {
+      "path": "formal/A209933/Classify.lean",
+      "bytes": 4176,
+      "sha256": "ce8c52cb5aa1ff197920866b12b3c6666e5df7adfd8223055609c7a302436eb8"
+    },
+    {
+      "path": "formal/A209933/Family.lean",
+      "bytes": 4764,
+      "sha256": "586689d5b92fc06bae87a2ca0aa9525f2e4e61fdd384beff5e5ff81f31cf2f18"
+    },
+    {
+      "path": "formal/A209933/Finite.lean",
+      "bytes": 1632,
+      "sha256": "bc71f5b0318616c65fd87f1955a7e65b90ee2d482de5a2c07286806c158aacfa"
+    },
+    {
+      "path": "formal/A209933/Initial.lean",
+      "bytes": 9040,
+      "sha256": "f952dd8654d0268f18c62a97ffebf0e61fb79ca08188c9a0688b7aba1a423ef8"
+    },
+    {
+      "path": "formal/A209933/Model.lean",
+      "bytes": 5105,
+      "sha256": "2ed1f3fd99c27df52c75b1280c41906809492487465d1af2f7e2ecd0e64fb9d8"
+    },
+    {
+      "path": "formal/A209933/Reach.lean",
+      "bytes": 4908,
+      "sha256": "7312086e6e6be163b4dc60f66021c313da099981933926ea10e717b8732b8ad7"
+    },
+    {
+      "path": "formal/A209933.lean",
+      "bytes": 143,
+      "sha256": "55f6160c16b491303ba3dc2f6e26d9727697e61703a401ea6854848f06a5de16"
+    },
+    {
+      "path": "formal/README.md",
+      "bytes": 3811,
+      "sha256": "0438c88668a41be01e37b5e7f81f25e221b01427050b6fd559d50f4144633365"
+    },
+    {
+      "path": "formal/lake-manifest.json",
+      "bytes": 3158,
+      "sha256": "93fd66f20adb447a465db568afeafa9bdc7a5d2ce562b2c1201940570e71246f"
+    },
+    {
+      "path": "formal/lakefile.lean",
+      "bytes": 262,
+      "sha256": "c565fa911e1dcf113f7720051b4d945ec4249f56f70eebbabee8420353f20500"
+    },
+    {
+      "path": "formal/lean-toolchain",
+      "bytes": 25,
+      "sha256": "582a63f8f9c5128067b688778c1051cf1464c3ca9d57b9325025c051c29b774a"
+    }
+  ],
+  "logs": [
+    {
+      "path": "outputs/lean.log",
+      "bytes": 9126,
+      "sha256": "5bbbdb4f01a67051aed465b8ddb2db6d132b632ab505e7f82f077f79e417b953"
+    },
+    {
+      "path": "outputs/leancheck.log",
+      "bytes": 41,
+      "sha256": "b4a5a2119e1d34b46527d63317f417c74261b65eeb93f14026389da2519c2ead"
+    },
+    {
+      "path": "outputs/lean4.log",
+      "bytes": 1737,
+      "sha256": "6b4c731e75dfe4cac5af183f7d1351ebbf2b167668d05449eedc72c621588efd"
+    },
+    {
+      "path": "outputs/leaninit.log",
+      "bytes": 5930,
+      "sha256": "0e24645b7c7f09f54ca4d792bb304e201679c51c427f4f0bdcf179481afdf6cd"
+    },
+    {
+      "path": "outputs/leanfin.log",
+      "bytes": 231,
+      "sha256": "d8c08e31026ac6e7e6d9585d13ca8564a80b3d76e12add095c30cf6df71f196d"
+    }
+  ],
+  "framework": {
+    "revision": "0.3-r22+formal1",
+    "policy": "/home/carlo/MATH/OEIS/OEIS_FRAMEWORK_LAB/r22_lean/FORMAL.md",
+    "policy_sha256": "ec77a2a0aa0294b1b9459992d5eb1ea827fc0b0626c5b2e12648537a255486e2"
+  },
+  "cleanup": {
+    "export": "Deleted after successful empty-environment kernel replay and hash/axiom receipt; regenerate with README commands.",
+    "deleted_bytes": 17302019,
+    "local_lake_cache": "Retained for the active VS Code Lean project; operational dependency cache, excluded from essential proof sources/publication payload. Global toolchain retained for ongoing formal work.",
+    "workspace_groups": "Protected data/snapshots/triages/review prompts retained byte-identically; research raw source and Notebook responses retained as provenance; bounded diagnostic sources/results retained; proof sources/pins/logs retained. No numerical outputs generated."
+  }
+}

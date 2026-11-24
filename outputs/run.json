@@ -1,0 +1,24 @@
+{
+  "schema": "a209933-run-1",
+  "status": "COMPLETE",
+  "mode": "ATTRIBUTED_DERIVATION",
+  "target": 101,
+  "catalog_sha256": "811e67da40f7c038e964995c559d19fb26e3d742a45b5be4697386ffba453765",
+  "source_sha256": "885b1ed8ad71134d4c5579cb404ac466f2f5c98ceb968679bae4ed1d783a9d64",
+  "verifier_sha256": "c0aa28758d66ca0be9ca6b03909766c5e92e7ae78d27ae0c27315c6ff76da76e",
+  "runtime": {
+    "implementation": "CPython",
+    "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "executable_sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+    "platform": "Linux-6.17.0-42-generic-x86_64-with-glibc2.39",
+    "byteorder": "little",
+    "stdlib": "installed standard library; not independently hashed"
+  },
+  "table": {
+    "rows": 101,
+    "bytes": 2708884,
+    "sha256": "2768468ad0f9a808e0e82bf43f6ecd16009e72c37e50d5dfcae038d39aa72fbc"
+  },
+  "elapsed_seconds": 0.14993639899967093,
+  "completed_utc": "2026-11-23T08:58:56.791143+00:00"
+}

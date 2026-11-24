@@ -1,0 +1,17 @@
+# schema=a209933-primes-1
+# mode=PUBLISHED
+# audited=2026-11-23
+# complete_through=109297
+# coverage_source=https://oeis.org/A004023/internal
+rank	exponent	status	attribution	source
+1	2	PROVEN	Historical_repunit_prime_catalog	https://oeis.org/A004023/internal
+2	19	PROVEN	Historical_repunit_prime_catalog	https://oeis.org/A004023/internal
+3	23	PROVEN	Lehmer_and_historical_catalog	https://oeis.org/A004023/internal
+4	317	PROVEN	Historical_repunit_prime_catalog	https://oeis.org/A004023/internal
+5	1031	PROVEN	Williams_and_Dubner_1986	https://oeis.org/A004023/internal
+6	49081	PROVEN	Underwood_2022_Primo	https://www.ellipsa.eu/public/primo/records.html
+7	86453	PROVEN	Enge_2023_CM	https://www.multiprecision.org/cm/ecpp.html
+8	109297	PROVEN	Underwood_and_Enge_2025_CM	https://enge.math.u-bordeaux.fr/blog/ecpp-109297.html
+9	270343	PRP	Voznyy_and_Budnyy_2007_PRP	https://oeis.org/A004023/internal
+10	5794777	PRP	Batalov_and_Propper_2021_PRP	https://oeis.org/A004023/internal
+11	8177207	PRP	Batalov_and_Propper_2021_PRP	https://oeis.org/A004023/internal

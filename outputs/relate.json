@@ -1,0 +1,97 @@
+{
+  "case_id": "A209933",
+  "status": "PASS_ADDITIONAL_COROLLARY_A182183",
+  "completed_at_utc": "2026-11-23T10:29:05.177174+00:00",
+  "selection": "Non-routine all-n cross-sequence assertion from the dossier, intended for paper; finite new numeric instances alone do not trigger another global proof.",
+  "theorems": [
+    "A209933.divisor_closed_iff",
+    "A209933.not_divisor_closed_fortyeight"
+  ],
+  "statement": "forall n:Nat, (forall d, d divides n -> A209933.Predicate d) iff A209933.Predicate n and n !=48",
+  "informal": "A182183 is exactly the set of A209933 values with48 removed, for every natural n, including correct exclusion of0.",
+  "sources": [
+    {
+      "path": "formal/A209933/Relations.lean",
+      "bytes": 2328,
+      "sha256": "2de5aa9fd064cfefd5ddf2f6d67dd39f986f5c0902af29ede3447b3a8726d3e2"
+    }
+  ],
+  "inherited_proof": {
+    "path": "outputs/formal.json",
+    "sha256": "55ce9ad5e8bfaae87c4169deaacf8da68b0abd7de8af048fd9cee91ea1b7afc8",
+    "source_changes": false
+  },
+  "build": {
+    "command": "lake build A209933.Relations",
+    "exit_code": 0,
+    "log": "outputs/relate.log",
+    "warnings": 0,
+    "target_module_seconds_reported": 0.72
+  },
+  "replay": {
+    "export_command": "lake env leanexport A209933.Relations -- A209933.divisor_closed_iff A209933.not_divisor_closed_fortyeight",
+    "export_bytes": 17599239,
+    "export_sha256": "fe8d8e35b65e507a5056f31b5f6de35accb80b98db9788f23f86a79d40287f66",
+    "check_command": "lake env leanchecker --from-export NEW_TEMP_EXPORT",
+    "exit_code": 0,
+    "log": "outputs/relcheck.log",
+    "scope": "Self-contained export checked in empty Lean kernel environment; same kernel implementation, not independent Lean4Lean."
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "custom_or_sorry_or_native_axiom": false,
+  "development_note": "First local draft had a norm_num syntax failure and therefore temporary sorryAx from error recovery; not accepted as proof. Corrected tactic syntax, successful final source/build/replay have only standard axioms.",
+  "scope_limits": [
+    "No new proof of a prime repunit instance or catalog completeness",
+    "No formal proof of Python or all46 numeric/index data",
+    "No assertion of infinitude; shifted-index identity holds wherever the sequences have the required ranks",
+    "No A182183 b-file edit or extension"
+  ],
+  "prior_art_check": {
+    "date": "2026-11-23",
+    "sources": [
+      "https://oeis.org/A182183/internal",
+      "https://oeis.org/A209933/internal"
+    ],
+    "finding": "Prior subsequence statement and specific48 exclusion are explicit. Exact all-n set equality not located in targeted sources; no worldwide priority claim. A182183 already displays eight R19 multiples credited to Greathouse2012."
+  },
+  "other_obligation_decisions": [
+    {
+      "claim": "Original global classification and decimal definition",
+      "decision": "REUSE_FULLY_PROVED",
+      "reason": "Both directions all n, unchanged definitions and source hashes."
+    },
+    {
+      "claim": "Adopted1..46 numeric prefix, Lucas R19/R23, finite exclusion below10^24",
+      "decision": "NO_ADDITIONAL_LEAN_REQUIRED",
+      "reason": "Existing independent finite checker and elementary explicit certificates close numeric obligations; unchanged all-n theorem covers structural side. Routine numeric specialization need not be formalized."
+    },
+    {
+      "claim": "Order/index formula and deletion shift",
+      "decision": "NO_SEPARATE_FORMALIZATION_SELECTED",
+      "reason": "Elementary disjoint sorted blocks,13 small +11 R2 baseline, coefficients<=24, exponent gap>=2; state any index shift only where ranks exist. No delicate new mathematical gap."
+    },
+    {
+      "claim": "Other future new paper theorems",
+      "decision": "REASSESS_WHEN_INTRODUCED",
+      "reason": "Autonomous formal2 rule; no blanket future exemption."
+    }
+  ],
+  "replay_wall_seconds": 108.1451666289995,
+  "export_retention": "Temporary reproducible export removed after successful replay; sources/pins/build and axiom logs retained.",
+  "logs": [
+    {
+      "path": "outputs/relate.log",
+      "bytes": 8663,
+      "sha256": "a7581af9330c873404e69ee49d116feb16a7569c3e97bf0aeba6f37508023e87"
+    },
+    {
+      "path": "outputs/relcheck.log",
+      "bytes": 41,
+      "sha256": "b4a5a2119e1d34b46527d63317f417c74261b65eeb93f14026389da2519c2ead"
+    }
+  ]
+}
