@@ -8,6 +8,13 @@
 \usepackage{xurl}
 \usepackage[colorlinks=true,linkcolor=black,citecolor=blue,urlcolor=blue]{hyperref}
 
+\hypersetup{
+  pdftitle={Decimal Divisor Digits and Prime Repunits: A Classification of OEIS A209933},
+  pdfauthor={Carlo Corti},
+  pdfsubject={Decimal divisor digits and prime repunits; OEIS A209933},
+  pdfkeywords={A209933, A182183, repunit primes, decimal digits, Lean}
+}
+
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -595,7 +602,7 @@ and its stated coverage.
 
 \section*{Data availability}
 
-The local publication package contains the adopted 46-term b-file,
+The public reproducibility package contains the adopted 46-term b-file,
 the historical 24-term table, the quotient-table diagnostic, the finite
 audit and its output, the catalog input, materializer and checker,
 and essential execution and verification records. The pinned Lean
@@ -607,10 +614,13 @@ new source build. The auxiliary 101-row table is regenerated from
 the supplied sources rather than duplicated in the package; its
 historical receipt and exact-integer audit source and result are included.
 Ranks beyond 46 retain the external premises stated above.
-The GitHub URL in the references identifies the intended public
-repository. This local preparation does not establish remote availability.
-The provisional Zenodo DOI will be replaced with the verified
-designated locator after the first Zenodo publication.
+The sources, data and essential verification records are available in the
+public GitHub repository and the Zenodo series cited in~\cite{project}.
+The Zenodo locator is a concept DOI that resolves to the series' latest version;
+individual deposited releases have their own version-specific DOIs.
+The package includes this manuscript's monolithic LaTeX source and matching
+PDF. The pinned external dependencies and the larger external primality
+certificates remain separate, as described above.
 
 \section*{AI use disclosure}
 
@@ -685,7 +695,7 @@ M. Marcus and contributors, \emph{OEIS A346267}, submitted 12 July
 C. Corti, \emph{Decimal Divisor Digits and Prime Repunits: A
 Classification of OEIS A209933}, GitHub repository and Zenodo archive,
 2026. \url{https://github.com/carcorti/A209933},
-\url{https://doi.org/10.5281/zenodo.xxxxxxxx}.
+\url{https://doi.org/10.5281/zenodo.24495613}.
 
 \bibitem{oeis116692}
 R. L. Shepherd and contributors, \emph{OEIS A116692}, primes with

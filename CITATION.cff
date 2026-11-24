@@ -1,16 +1,16 @@
 cff-version: 1.2.0
-message: "Please cite the software and accompanying article. DOI remains a placeholder pending post-publication finalization."
+message: "Please cite the software and accompanying article. The DOI identifies the Zenodo series."
 type: software
 title: "A209933: decimal divisor digits, classification and exact finite verification"
-version: v1.0
+version: v1.0.2
 date-released: '2026-11-24'
 authors:
   - family-names: Corti
     given-names: Carlo
     email: carlo.corti@outlook.com
 repository-code: "https://github.com/carcorti/A209933"
-url: "https://doi.org/10.5281/zenodo.xxxxxxxx"
-doi: 10.5281/zenodo.xxxxxxxx
+url: "https://doi.org/10.5281/zenodo.24495613"
+doi: 10.5281/zenodo.24495613
 license: MIT
 abstract: >-
   Sources, pinned Lean proofs and Python verification for the classification
@@ -33,5 +33,5 @@ preferred-citation:
       given-names: Carlo
       email: carlo.corti@outlook.com
   year: 2026
-  doi: 10.5281/zenodo.xxxxxxxx
-  url: "https://doi.org/10.5281/zenodo.xxxxxxxx"
+  doi: 10.5281/zenodo.24495613
+  url: "https://doi.org/10.5281/zenodo.24495613"

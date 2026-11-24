@@ -7,6 +7,7 @@ work to the unchanged retained programs; it is not a new scientific oracle.
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path, PurePosixPath
 import shutil
 import subprocess
@@ -228,14 +229,14 @@ def main():
                           'maximum_capacity_run': 'not executed'}
             elif args.tex:
                 for _ in range(3):
-                    execute(['pdflatex', '-draftmode', '-interaction=nonstopmode',
+                    execute(['pdflatex', '-interaction=nonstopmode',
                              '-halt-on-error', '-output-directory=' + str(tmp),
-                             str(ROOT / 'paper/A209933_v4.tex')], cwd=tmp)
-                log = (tmp / 'A209933_v4.log').read_text(errors='replace')
-                require('undefined references' not in log and 'undefined citations' not in log and
-                        'multiply defined' not in log, 'unresolved TeX references')
-                require(not list(tmp.glob('*.pdf')), 'unexpected PDF')
-                result = {'tex': 'PASS', 'PDF_created': False}
+                             str(ROOT / 'paper/A209933.tex')], cwd=tmp)
+                log = (tmp / 'A209933.log').read_text(errors='replace')
+                require(re.search(r'(?im)^(?:!|[^\n]*\bwarning:|pdfTeX warning\b|Overfull\b|Underfull\b|Missing character:)', log) is None,
+                        'TeX error, warning or box diagnostic')
+                require((tmp / 'A209933.pdf').is_file(), 'missing rebuilt PDF')
+                result = {'tex': 'PASS', 'PDF_created': True, 'PDF_output': 'temporary only'}
             else:
                 result = bounded(tmp)
     print(json.dumps({'status': 'PASS', 'payload_files': count, **result}, indent=2))

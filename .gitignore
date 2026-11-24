@@ -1,0 +1,17 @@
+# Generated Python support.
+__pycache__/
+*.py[cod]
+
+# LaTeX support only; retain paper/A209933.pdf and essential outputs/*.log.
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+
+# Private review and regenerable dependency caches.
+paper_review/
+src_review/
+.lake/

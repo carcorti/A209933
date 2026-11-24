@@ -2,12 +2,12 @@
 
 Carlo Corti, November 2026. Sources prepared 23 November 2026;
 published on the repository's default branch on 24 November 2026.
-Software version: `v1.0`, released 24 November 2026;
-provisional manuscript: `paper/A209933_v4.tex`.
+Software version: `v1.0.2`, released 24 November 2026.
+Manuscript: `paper/A209933.tex`; matching PDF: `paper/A209933.pdf`.
 Repository: <https://github.com/carcorti/A209933>.
-Release: <https://github.com/carcorti/A209933/releases/tag/v1.0>.
-The DOI `10.5281/zenodo.xxxxxxxx` remains a literal placeholder until separate
-post-publication finalization with the verified designated Zenodo locator.
+Release: <https://github.com/carcorti/A209933/releases/tag/v1.0.2>.
+Zenodo series: <https://doi.org/10.5281/zenodo.24495613>. This concept DOI
+resolves to the latest deposited version; each release also has its own version DOI.
 The supplied MIT license is preserved.
 
 A209933 consists of positive integers divisible by every digit of every positive
@@ -34,7 +34,7 @@ syntax and declared status, not the truth of those external scientific premises.
 
 | Path | Role |
 | --- | --- |
-| `paper/A209933_v4.tex` | Current monolithic English manuscript, inline bibliography, no external scientific assets. Version 4 changes only data availability from version 3. |
+| `paper/A209933.tex`, `paper/A209933.pdf` | Final monolithic English manuscript with inline bibliography and the matching 11-page PDF; no external scientific assets. |
 | `src/a209933.py` | Original reviewed decimal materializer; standard-library Python. |
 | `check/verify.py` | Original digit-by-digit multiplication verifier. Arithmetic differs from producer templates; catalog and block ordering are shared premises. |
 | `check/audit.py` | Original independent finite enumeration below `10^24`, local Lucas proofs and exact adopted-prefix comparison. Imports neither materializer, verifier nor catalog. |
@@ -51,7 +51,7 @@ syntax and declared status, not the truth of those external scientific premises.
 | `outputs/formal.json`, `outputs/relate.json` | Original formal statements, source hashes, successful builds, axiom audits and replay scope. |
 | `outputs/*.log` | Essential original formal build, axiom and replay logs, including the failed incompatible Lean4Lean attempt. |
 | `outputs/origin.json` | Exact original-to-public copy map, byte sizes and SHA-256 identities. Historical paths in immutable records are interpreted through this map. |
-| `checks.sha256`, `CITATION.cff`, `LICENSE` | Frozen inventory, provisional citation metadata and existing author license. |
+| `checks.sha256`, `CITATION.cff`, `LICENSE`, `.gitignore` | Frozen inventory including TeX/PDF, citation metadata, existing MIT license and generated-file exclusions. |
 
 Execution records describe their original dates. In particular, `formal.json`
 predates the later deletion-identity proof and cache removal: its then-current
@@ -193,16 +193,30 @@ scientific `input`/`include`, figures or private assets are needed. Use pdfTeX
 1.40.25 / TeX Live 2023 or a compatible LaTeX installation with `lmodern`,
 `geometry`, `amsmath`, `amssymb`, `amsthm`, `booktabs`, `microtype`, `xurl` and
 `hyperref` (plus standard font/input encoding packages). The bounded build checks
-references in draft mode without producing a PDF:
+references by rebuilding the PDF in disposable storage and rejects final-pass
+warnings, errors, overfull or underfull boxes. The delivered PDF is not modified:
 
 ```sh
 python3 -B check/check.py --tex
 ```
 
-To typeset separately when desired, run `pdflatex` three times on
-`paper/A209933_v4.tex`, with an existing output directory outside this payload.
-No PDF is included in this local draft. All scientific statements, bibliography
-and author identity match version 3; only the availability paragraph was updated.
+The matching PDF is included and covered by `checks.sha256`. To rebuild it
+without adding generated files to this payload, choose an existing output
+directory outside the repository and run three passes:
+
+```sh
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=/tmp/a209933-pdf paper/A209933.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=/tmp/a209933-pdf paper/A209933.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory=/tmp/a209933-pdf paper/A209933.tex
+```
+
+Create `/tmp/a209933-pdf` before running these commands. References settle across
+passes; the final log must contain no errors, warnings or box diagnostics. PDF
+creation timestamps and identifiers may differ on rebuild; this does not change
+the manuscript content. The delivered PDF has been rendered and inspected on
+all 11 pages, including author metadata, tables, references and public links.
+`.gitignore` excludes only generated support and private/cache directories; it
+keeps the delivered PDF and all required execution logs eligible for tracking.
 
 Package checksums describe this release payload. The local pre-upload audit exercises
 the bounded commands above in fresh clone-like and extracted-archive roots,
@@ -210,7 +224,8 @@ including missing, changed and unexpected-file controls. This establishes only
 the local bytes; actual GitHub/Zenodo distribution verification is a separate
 post-publication step. Before each later GitHub release, the author must confirm
 the repository/tag-specific Zenodo account connection and enabled repository
-synchronization. On 24 November 2026 the author confirmed the linked account and
-enabled synchronization for `carcorti/A209933`, tag `v1.0`, and authorized this
-release. The resulting Zenodo deposit and actual distributed archives require
-their own verification; the account confirmation alone does not certify them.
+synchronization. The linked integration successfully deposited the preceding
+release. The author explicitly authorized publication and release `v1.0.2` with
+this final manuscript/PDF and series DOI. Its new deposited files require their
+own verification after synchronization; the existing deposit does not certify
+the new payload in advance.
